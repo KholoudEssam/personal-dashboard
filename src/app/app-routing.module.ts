@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'todos', component: TodosComponent },
   { path: 'notes', component: NotesComponent },
   { path: 'notes/add', component: NoteBoxComponent },
+  { path: 'notes/edit/:id', component: NoteBoxComponent },
   { path: '', component: BookmarksComponent },
 ];
 

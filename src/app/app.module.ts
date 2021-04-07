@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +26,12 @@ import { NoteBoxComponent } from './dashboard/notes/note-box/note-box.component'
     NoteComponent,
     NoteBoxComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

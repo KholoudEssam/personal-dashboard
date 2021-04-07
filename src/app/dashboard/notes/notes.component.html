@@ -1,6 +1,6 @@
 <div class="notes-wrapper">
   <div class="container">
-    <app-note></app-note>
+    <app-note *ngFor="let note of notes" [note]="note"></app-note>
     <div class="btn-div">
       <a class="btn" routerLink="add">
         <span class="material-icons-outlined">add</span>

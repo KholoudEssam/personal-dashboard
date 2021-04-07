@@ -1,16 +1,37 @@
 <div class="note-box-wrapper has-white-bg container">
   <h2>New Note</h2>
-  <form>
-    <input type="text" placeholder="Enter title.." />
-    <textarea
-      name=""
-      rows="3"
-      placeholder="Enter note body.."
-      resizeable="false"
-    ></textarea>
+  <form #f="ngForm" (ngSubmit)="addNoteForm(f)">
+    <div class="form-field">
+      <input
+        type="text"
+        required
+        minlength="3"
+        name="title"
+        ngModel
+        #title="ngModel"
+        placeholder="Enter note title.."
+      />
+      <span *ngIf="title.errors?.required && title.touched"
+        >Please enter title for note</span
+      >
+      <span *ngIf="title.errors?.minlength && title.touched"
+        >Title must be at least 3 characters</span
+      >
+    </div>
+
+    <div class="form-field">
+      <textarea
+        rows="3"
+        name="content"
+        ngModel
+        placeholder="Enter note body.."
+      ></textarea>
+    </div>
     <div class="btns-div">
       <a routerLink="/notes" class="btn">Cancel</a>
-      <a routerLink="" class="btn">Create Note</a>
+      <button type="submit" [disabled]="f.invalid" class="btn">
+        Create Note
+      </button>
     </div>
   </form>
 </div>
