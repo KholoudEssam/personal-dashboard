@@ -1,0 +1,43 @@
+.note-box-wrapper {
+  padding: 5px 30px;
+  border-radius: 4px;
+  h2 {
+    font-size: 30px;
+    color: #222;
+    font-weight: 600;
+
+    padding: 7px 0;
+    margin-bottom: 8px;
+  }
+}
+form {
+  display: flex;
+  flex-direction: column;
+  input,
+  textarea {
+    font-family: inherit;
+    outline: none;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(#fff, 0.95);
+    border: 2px solid rgba(#000, 0.7);
+    border-radius: 4px;
+    margin-bottom: 10px;
+
+    &:focus {
+      background-color: rgba(#fff, 0.8);
+      border: 2px solid rgba(#000, 0.9);
+    }
+  }
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+}
+
+.btns-div {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}

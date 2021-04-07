@@ -12,6 +12,7 @@ import { NotesComponent } from './dashboard/notes/notes.component';
 import { BookmarkTileComponent } from './dashboard/bookmarks/bookmark-tile/bookmark-tile.component';
 import { TodoComponent } from './dashboard/todos/todo/todo.component';
 import { NoteComponent } from './dashboard/notes/note/note.component';
+import { NoteBoxComponent } from './dashboard/notes/note-box/note-box.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NoteComponent } from './dashboard/notes/note/note.component';
     BookmarkTileComponent,
     TodoComponent,
     NoteComponent,
+    NoteBoxComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
   providers: [],
