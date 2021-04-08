@@ -9,6 +9,11 @@
     padding: 7px 0;
     margin-bottom: 8px;
   }
+  p {
+    margin-bottom: 20px;
+    color: rgb(226, 33, 33);
+    text-align: center;
+  }
 }
 form {
   display: flex;
@@ -67,5 +72,16 @@ form {
   span {
     margin-top: 5px;
     color: rgb(226, 33, 33);
+  }
+}
+
+.btn-group {
+  display: flex;
+
+  button {
+    font-size: 16px;
+  }
+  button[type="button"] {
+    margin-right: 10px;
   }
 }

@@ -1,37 +1,51 @@
 <div class="note-box-wrapper has-white-bg container">
-  <h2>New Note</h2>
-  <form #f="ngForm" (ngSubmit)="addNoteForm(f)">
-    <div class="form-field">
-      <input
-        type="text"
-        required
-        minlength="3"
-        name="title"
-        [ngModel]="note.title"
-        #title="ngModel"
-        placeholder="Enter note title.."
-      />
-      <span *ngIf="title.errors?.required && title.touched"
-        >Please enter title for note</span
-      >
-      <span *ngIf="title.errors?.minlength && title.touched"
-        >Title must be at least 3 characters</span
-      >
-    </div>
+  <h2>{{ editMode ? "Edit Note" : "New Note" }}</h2>
+  <p *ngIf="!note; else renderForm">No Note found!!</p>
 
-    <div class="form-field">
-      <textarea
-        rows="3"
-        name="content"
-        [ngModel]="note.content"
-        placeholder="Enter note body.."
-      ></textarea>
-    </div>
-    <div class="btns-div">
-      <a routerLink="/notes" class="btn">Cancel</a>
-      <button type="submit" [disabled]="f.invalid" class="btn">
-        {{ editMode ? "Save" : "Create Note" }}
-      </button>
-    </div>
-  </form>
+  <ng-template #renderForm>
+    <form #f="ngForm" (ngSubmit)="onSubmitForm(f)" #renderForm>
+      <div class="form-field">
+        <input
+          type="text"
+          required
+          minlength="3"
+          name="title"
+          [ngModel]="note.title"
+          #title="ngModel"
+          placeholder="Enter note title.."
+        />
+        <span *ngIf="title.errors?.required && title.touched"
+          >Please enter title for note</span
+        >
+        <span *ngIf="title.errors?.minlength && title.touched"
+          >Title must be at least 3 characters</span
+        >
+      </div>
+
+      <div class="form-field">
+        <textarea
+          rows="3"
+          name="content"
+          [ngModel]="note.content"
+          placeholder="Enter note body.."
+        ></textarea>
+      </div>
+      <div class="btns-div">
+        <a routerLink="/notes" class="btn">Cancel</a>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn"
+            (click)="onDeleteNote(note.id)"
+            *ngIf="editMode"
+          >
+            Delete
+          </button>
+          <button type="submit" [disabled]="f.invalid" class="btn">
+            {{ editMode ? "Save" : "Create Note" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
 </div>

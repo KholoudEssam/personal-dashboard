@@ -29,7 +29,7 @@ export class NoteBoxComponent implements OnInit {
     });
   }
 
-  addNoteForm(f: NgForm) {
+  onSubmitForm(f: NgForm) {
     if (f.invalid) return;
 
     const { title, content } = f.value;
@@ -41,6 +41,11 @@ export class NoteBoxComponent implements OnInit {
       this.noteService.addNote(note);
     }
 
+    this.router.navigate(['/notes']);
+  }
+
+  onDeleteNote(id) {
+    this.noteService.deleteNote(id);
     this.router.navigate(['/notes']);
   }
 }
