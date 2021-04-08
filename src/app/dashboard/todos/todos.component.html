@@ -1,5 +1,13 @@
 <div class="todos-wrapper">
   <div class="container">
-    <app-todo></app-todo>
+    <a *ngFor="let todo of todos">
+      <app-todo [todo]="todo"></app-todo>
+    </a>
+    <div class="btn-div">
+      <a class="btn" routerLink="add">
+        <span class="material-icons-outlined">add</span>
+        <span>Add</span>
+      </a>
+    </div>
   </div>
 </div>

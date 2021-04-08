@@ -1,0 +1,43 @@
+<div class="todo-box-wrapper has-white-bg container">
+  <h2>{{ editMode ? "Edit Todo" : "New Todo" }}</h2>
+  <p *ngIf="!todo; else renderForm">No Todo found!!</p>
+
+  <ng-template #renderForm>
+    <form #f="ngForm" (ngSubmit)="onSubmitForm(f)" #renderForm>
+      <div class="form-field">
+        <input
+          type="text"
+          required
+          minlength="3"
+          name="text"
+          [ngModel]="todo.text"
+          #text="ngModel"
+          placeholder="Enter todo text.."
+        />
+        <span *ngIf="text.errors?.required && text.touched"
+          >Please enter text for todo</span
+        >
+        <span *ngIf="text.errors?.minlength && text.touched"
+          >Text must be at least 3 characters</span
+        >
+      </div>
+
+      <div class="btns-div">
+        <a routerLink="/todos" class="btn">Cancel</a>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn"
+            (click)="onDeleteTodo(todo.id)"
+            *ngIf="editMode"
+          >
+            Delete
+          </button>
+          <button type="submit" [disabled]="f.invalid" class="btn">
+            {{ editMode ? "Save" : "New Todo" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>

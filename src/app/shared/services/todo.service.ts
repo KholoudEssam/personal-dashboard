@@ -5,7 +5,12 @@ import { Todo } from '../models/todo.model';
   providedIn: 'root',
 })
 export class TodoService {
-  todos: Todo[] = [];
+  // todos: Todo[] = [];
+  todos: Todo[] = [
+    new Todo('First Todo'),
+    new Todo('Test Todo'),
+    new Todo('Test Todo22'),
+  ];
   constructor() {}
 
   getTodos() {
@@ -27,6 +32,6 @@ export class TodoService {
 
   deleteTodo(id: string) {
     const todoIndex = this.todos.findIndex((t) => t.id === id);
-    if (todoIndex) this.todos.splice(todoIndex, 1);
+    if (todoIndex !== -1) this.todos.splice(todoIndex, 1);
   }
 }
