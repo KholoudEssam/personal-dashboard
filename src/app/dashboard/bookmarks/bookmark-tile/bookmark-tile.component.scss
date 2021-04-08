@@ -6,7 +6,7 @@
   background-color: rgba(#000, 0.5);
   width: 100px;
   height: 100px;
-  margin: 5px 10px;
+  margin: 5px;
   border-radius: 5px;
   cursor: pointer;
   &:hover {
@@ -16,14 +16,25 @@
     background-color: rgba(#000, 0.8);
     transform: translateY(3px);
   }
-  img {
-    padding: 10px 0;
-    max-width: 32px;
+
+  .tile-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+    img {
+      padding: 10px 0;
+      max-width: 32px;
+    }
   }
+
   p {
     color: #fff;
     font-size: 14px;
     overflow: hidden;
+    margin-top: 10px;
     text-align: center;
     max-width: 80%;
     text-overflow: ellipsis;

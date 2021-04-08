@@ -6,3 +6,27 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  a:first-of-type {
+    margin-right: 10px;
+  }
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-size: 14px;
+    margin: 0 5px;
+    &.material-icons-outlined {
+      margin-right: 3px;
+      margin-left: -2px;
+    }
+  }
+}

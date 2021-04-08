@@ -1,0 +1,53 @@
+<div class="bookmark-box-wrapper has-white-bg container">
+  <h2>{{ editMode ? "Edit Bookmark" : "New Bookmark" }}</h2>
+  <p *ngIf="!bookmark; else renderForm">No Bookmark found!!</p>
+
+  <ng-template #renderForm>
+    <form #f="ngForm" (ngSubmit)="onSubmitForm(f)" #renderForm>
+      <div class="form-field">
+        <input
+          type="text"
+          name="name"
+          [ngModel]="bookmark.name"
+          #name="ngModel"
+          placeholder="e.g Wikipedia"
+        />
+      </div>
+
+      <div class="form-field">
+        <input
+          type="url"
+          required
+          pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+          name="url"
+          [ngModel]="bookmark.url"
+          #url="ngModel"
+          placeholder="e.g https://wikipedia.com"
+        />
+        <span *ngIf="url.errors?.required && url.touched"
+          >Please enter url for bookmark</span
+        >
+        <span *ngIf="url.errors?.pattern && url.touched"
+          >Please enter a valid url</span
+        >
+      </div>
+
+      <div class="btns-div">
+        <a routerLink="/bookmarks" class="btn">Cancel</a>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn"
+            (click)="onDeleteBookmark(bookmark.id)"
+            *ngIf="editMode"
+          >
+            Delete
+          </button>
+          <button type="submit" [disabled]="f.invalid" class="btn">
+            {{ editMode ? "Save" : "Create Bookmark" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>
