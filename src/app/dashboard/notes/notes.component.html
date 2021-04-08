@@ -1,6 +1,8 @@
 <div class="notes-wrapper">
   <div class="container">
-    <app-note *ngFor="let note of notes" [note]="note"></app-note>
+    <a *ngFor="let note of notes" [routerLink]="['edit', note.id]">
+      <app-note [note]="note"></app-note>
+    </a>
     <div class="btn-div">
       <a class="btn" routerLink="add">
         <span class="material-icons-outlined">add</span>

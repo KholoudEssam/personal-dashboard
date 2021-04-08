@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/app/shared/models/note.model';
 import { NoteService } from 'src/app/shared/services/note.service';
 
@@ -10,15 +10,37 @@ import { NoteService } from 'src/app/shared/services/note.service';
   styleUrls: ['./note-box.component.scss'],
 })
 export class NoteBoxComponent implements OnInit {
-  constructor(private noteService: NoteService, private router: Router) {}
+  constructor(
+    private noteService: NoteService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  editMode = false;
+  note: Note = { id: '', title: '', content: '' };
+
+  ngOnInit(): void {
+    this.route.params.subscribe(({ id }) => {
+      if (id === undefined) return;
+      else {
+        this.editMode = true;
+        this.note = this.noteService.getNote(id);
+      }
+    });
+  }
 
   addNoteForm(f: NgForm) {
-    console.log('clicked');
     if (f.invalid) return;
-    const note = new Note(f.value.title, f.value.content);
-    this.noteService.addNote(note);
+
+    const { title, content } = f.value;
+
+    if (this.editMode) {
+      this.noteService.editNote(this.note.id, { title, content });
+    } else {
+      const note = new Note(title, content);
+      this.noteService.addNote(note);
+    }
+
     this.router.navigate(['/notes']);
   }
 }

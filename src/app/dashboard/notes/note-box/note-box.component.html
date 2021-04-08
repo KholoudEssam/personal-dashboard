@@ -7,7 +7,7 @@
         required
         minlength="3"
         name="title"
-        ngModel
+        [ngModel]="note.title"
         #title="ngModel"
         placeholder="Enter note title.."
       />
@@ -23,14 +23,14 @@
       <textarea
         rows="3"
         name="content"
-        ngModel
+        [ngModel]="note.content"
         placeholder="Enter note body.."
       ></textarea>
     </div>
     <div class="btns-div">
       <a routerLink="/notes" class="btn">Cancel</a>
       <button type="submit" [disabled]="f.invalid" class="btn">
-        Create Note
+        {{ editMode ? "Save" : "Create Note" }}
       </button>
     </div>
   </form>
