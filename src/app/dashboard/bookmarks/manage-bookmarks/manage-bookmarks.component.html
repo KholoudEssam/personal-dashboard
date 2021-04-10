@@ -1,0 +1,17 @@
+<div class="manage-bookmarks-wrapper container">
+  <div class="side-bar">
+    <p>Your Bookmarks</p>
+    <div class="side-bar-items">
+      <a
+        *ngFor="let bm of bookmarks"
+        [routerLink]="[bm.id]"
+        routerLinkActive="active"
+      >
+        <span> {{ bm.name }} </span>
+      </a>
+    </div>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

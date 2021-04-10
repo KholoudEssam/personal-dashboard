@@ -39,16 +39,16 @@ export class BookmarkBoxComponent implements OnInit {
 
     if (this.editMode) {
       this.bookmarkService.editBookmark(this.bookmark.id, { name, url });
+      this.router.navigate(['/bookmarks/manage']);
     } else {
       const todo = new Bookmark(name, url);
       this.bookmarkService.addBookmark(todo);
+      this.router.navigate(['/bookmarks']);
     }
-
-    this.router.navigate(['/bookmarks']);
   }
 
   onDeleteBookmark(id) {
     this.bookmarkService.deleteBookmark(id);
-    this.router.navigate(['/bookmarks']);
+    this.router.navigate(['/bookmarks/manage']);
   }
 }

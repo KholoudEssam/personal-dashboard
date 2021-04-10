@@ -1,6 +1,6 @@
 <div class="bookmarks-wrapper">
   <div class="container">
-    <a *ngFor="let bm of bookmarks" [routerLink]="['/bookmarks/edit', bm.id]">
+    <a *ngFor="let bm of bookmarks" [href]="bm.url" target="_blank">
       <app-bookmark-tile [bookmark]="bm"></app-bookmark-tile>
     </a>
 
@@ -9,7 +9,7 @@
         <span class="material-icons-outlined">add</span>
         <span>Add</span>
       </a>
-      <a class="btn disable-user-select" routerLink="/bookmarks/add">
+      <a class="btn disable-user-select" routerLink="/bookmarks/manage">
         <span class="material-icons-outlined">settings</span>
         <span>Manage</span>
       </a>

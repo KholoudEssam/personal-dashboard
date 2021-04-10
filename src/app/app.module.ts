@@ -15,6 +15,7 @@ import { NoteComponent } from './dashboard/notes/note/note.component';
 import { NoteBoxComponent } from './dashboard/notes/note-box/note-box.component';
 import { TodoBoxComponent } from './dashboard/todos/todo-box/todo-box.component';
 import { BookmarkBoxComponent } from './dashboard/bookmarks/bookmark-box/bookmark-box.component';
+import { ManageBookmarksComponent } from './dashboard/bookmarks/manage-bookmarks/manage-bookmarks.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BookmarkBoxComponent } from './dashboard/bookmarks/bookmark-box/bookmar
     NoteBoxComponent,
     TodoBoxComponent,
     BookmarkBoxComponent,
+    ManageBookmarksComponent,
   ],
   imports: [
     BrowserModule,
