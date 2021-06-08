@@ -1,5 +1,5 @@
 <div class="app-wrapper">
-  <img [src]="bgImg" alt="background" class="bg-img" (load)="imageLoaded()" />
+  <img [src]="bgImg" class="bg-img" (load)="imageLoaded()" />
   <div class="btn btn-bg" (click)="changeBg()" *ngIf="imgLoaded">
     <span class="material-icons-outlined">refresh</span>
   </div>

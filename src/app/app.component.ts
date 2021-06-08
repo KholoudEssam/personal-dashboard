@@ -35,8 +35,7 @@ import { map } from 'rxjs/operators';
   ],
 })
 export class AppComponent {
-  bgImg =
-    'https://images.unsplash.com/photo-1615569082599-865be05af048?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&ixlib=rb-1.2.1&q=80&w=1920';
+  bgImg = 'assets/photo-bg.jpg';
   imgLoaded = true;
   dateTime = new Observable<Date>();
 
@@ -50,12 +49,17 @@ export class AppComponent {
 
   async changeBg() {
     this.imgLoaded = false;
-    const newBg = await fetch('https://source.unsplash.com/random/1920x1080', {
-      method: 'HEAD',
-    });
-
-    if (newBg.url === this.bgImg) return this.changeBg();
-    this.bgImg = newBg.url;
+    let newBg;
+    try {
+      newBg = await fetch('https://source.unsplash.com/random/1920x1080', {
+        method: 'HEAD',
+      });
+      if (newBg.url === this.bgImg) return this.changeBg();
+      this.bgImg = newBg.url;
+    } catch (err) {
+      newBg = this.bgImg;
+      console.log(err);
+    }
   }
   imageLoaded() {
     this.imgLoaded = true;

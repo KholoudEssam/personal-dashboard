@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'notes', component: NotesComponent },
   { path: 'notes/add', component: NoteBoxComponent },
   { path: 'notes/edit/:id', component: NoteBoxComponent },
-  { path: '', component: BookmarksComponent },
+  { path: '', redirectTo: 'bookmarks', pathMatch: 'full' },
 ];
 
 @NgModule({

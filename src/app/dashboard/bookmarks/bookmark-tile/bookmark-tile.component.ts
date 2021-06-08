@@ -13,6 +13,7 @@ export class BookmarkTileComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.tileImg = `${this.bookmark.url.origin}/favicon.ico`;
+    this.tileImg = `${this.bookmark.url}/favicon.ico`;
+    // console.log(this.bookmark.url);
   }
 }
